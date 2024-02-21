@@ -10,3 +10,5 @@ panic = "abort"
 panic = "abort"
 
 [dependencies]
+bootloader = "0.9"
+x86_64 = "0.14.12"
