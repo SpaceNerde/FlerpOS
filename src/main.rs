@@ -19,9 +19,8 @@ use core::fmt::Write;
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
-    vga_buffer::WRITER.lock().write_str("Hello, World!").unwrap();
-    write!(vga_buffer::WRITER.lock(), ", some numbers: {} {}", 42, 1.337).unwrap();
-
+    println!("Hello, World{}", "!");
+    
     loop {}
 }
 
