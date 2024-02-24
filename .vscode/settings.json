@@ -1,0 +1,12 @@
+{
+    "accessibility.alert.error": false,
+    "rust-analyzer.semanticHighlighting.doc.comment.inject.enable": true,
+    "rust-analyzer.highlightRelated.breakPoints.enable": true,
+    "rust-analyzer.highlightRelated.closureCaptures.enable": true,
+    "rust-analyzer.highlightRelated.exitPoints.enable": true,
+    "rust-analyzer.highlightRelated.references.enable": true,
+    "rust-analyzer.highlightRelated.yieldPoints.enable": true,
+    "rust-analyzer.semanticHighlighting.operator.enable": true,
+    "rust-analyzer.semanticHighlighting.nonStandardTokens": true,
+    "rust-analyzer.checkOnSave": false
+}
