@@ -25,8 +25,6 @@ pub extern "C" fn _start() -> ! {
 
     flerp_os::init();
 
-    x86_64::instructions::interrupts::int3();
-
     #[cfg(test)]
     test_main();
 
