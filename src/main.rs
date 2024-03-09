@@ -89,12 +89,6 @@ pub fn test_runner(tests: &[&dyn Testable]) {
     exit_qemu(QemuExitCode::Success);
 }
 
-// test to test the test runnner? lol
-#[test_case]
-fn trivial_assertion() {
-    assert_eq!(1, 1);
-}
-
 //------------------------------------------------
 //
 // Qemu Logic
@@ -116,4 +110,16 @@ pub fn exit_qemu(exit_code: QemuExitCode) {
         let mut port = Port::new(0xf4);
         port.write(exit_code as u32);
     }
+}
+
+//------------------------------------------------
+//
+// Tests
+//
+//------------------------------------------------
+
+// test to test the test runnner? lol
+#[test_case]
+fn trivial_assertion() {
+    assert_eq!(1, 1);
 }
