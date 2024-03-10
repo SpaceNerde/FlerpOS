@@ -2,10 +2,10 @@
 #![no_main]
 #![feature(abi_x86_interrupt)]
 
+use core::panic::PanicInfo;
+use flerp_os::{exit_qemu, serial_print, serial_println, QemuExitCode};
 use lazy_static::lazy_static;
 use x86_64::structures::idt::{InterruptDescriptorTable, InterruptStackFrame};
-use core::panic::PanicInfo;
-use flerp_os::{serial_print, serial_println, exit_qemu, QemuExitCode};
 
 #[no_mangle]
 pub extern "C" fn _start() -> ! {
