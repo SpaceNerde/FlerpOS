@@ -89,8 +89,6 @@ extern "x86-interrupt" fn double_fault_handler(
 
 // triggers on timer intel 8259 interrup
 extern "x86-interrupt" fn timer_interrupt_handler(_stack_frame: InterruptStackFrame) {
-    print!(".");
-
     // send EOI signal to process further Interrupts
     unsafe {
         PICS.lock()

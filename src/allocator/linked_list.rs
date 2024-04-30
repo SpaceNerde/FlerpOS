@@ -1,6 +1,6 @@
 use super::{align_up, Locked};
-use core::{mem, ptr};
 use alloc::alloc::{GlobalAlloc, Layout};
+use core::{mem, ptr};
 
 struct ListNode {
     size: usize,
@@ -50,9 +50,7 @@ impl LinkedListAllocator {
         self.head.next = Some(&mut *node_ptr)
     }
 
-    fn find_region(&mut self, size: usize, align: usize) 
-        -> Option<(&'static mut ListNode, usize)> 
-    {
+    fn find_region(&mut self, size: usize, align: usize) -> Option<(&'static mut ListNode, usize)> {
         let mut current = &mut self.head;
         // search for large enough region
         while let Some(ref mut region) = current.next {
