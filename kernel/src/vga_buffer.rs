@@ -1,3 +1,7 @@
+// VGA Buffer out of use
+// Convert to new pixel engine pls
+// TODO: Move your fucking ass and fix this piece of shit!
+
 use core::fmt;
 use lazy_static::lazy_static;
 use spin::Mutex;
