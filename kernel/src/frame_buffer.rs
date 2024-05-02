@@ -3,7 +3,7 @@
 // Changes the Color of an given Pixel in Bitmap.....
 // Not that hard.....
 
-use bootloader_api::info::FrameBuffer;
+use bootloader_api::info::{FrameBuffer};
 use noto_sans_mono_bitmap::{ get_raster, get_raster_width, FontWeight, RasterHeight };
 
 // configure noto-sans-mono-bitmap lib
@@ -26,11 +26,13 @@ pub struct Color {
 }
 
 pub struct Writer {
-    framebuffer: &'static mut [u8],
-    pos_x: usize,
-    pos_y: usize,
+    pub framebuffer: &'static mut [u8],
+    pub pos_x: usize,
+    pub pos_y: usize,
 }
 
 impl Writer {
-    
+    pub fn clear(&mut self) {
+        self.framebuffer.fill(0)
+    }   
 }

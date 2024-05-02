@@ -12,6 +12,7 @@
 
 use bootloader_api::{entry_point, BootInfo};
 use bootloader_api::config::{BootloaderConfig, Mapping};
+use bootloader_api::info::FrameBuffer;
 use core::panic::PanicInfo;
 use kernel::println;
 use x86_64::VirtAddr;
@@ -28,18 +29,23 @@ pub static BOOTLOADER_CONFIG: BootloaderConfig = {
 entry_point!(kernel_main, config=&BOOTLOADER_CONFIG);
 
 fn kernel_main(boot_info: &'static mut BootInfo) -> ! {
-    if let Some(framebuffer) = boot_info.framebuffer.as_mut() {
-        for byte in framebuffer.buffer_mut() {
-            *byte = 0x90;
-        }
-    }
-    
     use kernel::allocator;
     use kernel::memory::{self, BootInfoFrameAllocator};
+    use kernel::frame_buffer;
 
     //println!("Hello World{}", "!");
     kernel::init();
+    
+    if let Some(framebuffer) = boot_info.framebuffer.as_mut() {
+        let mut buffer_writer = frame_buffer::Writer {
+            framebuffer: framebuffer.buffer_mut(),
+            pos_x: 10,
+            pos_y: 100,
+        };
+        buffer_writer.clear();
+    }
 
+    
     // why the frick did they turn physical... into a fucking Optional!!! not Option no OPTIONAL!!!!
     // AHHHHHHHHHHHHHHHHH
     let phys_mem_offset = VirtAddr::new(boot_info.physical_memory_offset.into_option().unwrap());
