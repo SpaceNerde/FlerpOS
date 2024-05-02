@@ -1,13 +1,9 @@
-// use this for special purpose?
-// cargo build --target x86_64-flerp_os.json
-// if it not works use this command
-// cargo build --target thumbv7em-none-eabihf
-
 // build
-// 1: cargo install bootimage
-// 2: cargo bootimage
-// 3: cargo build (start from here if u did steps above)
-// 4: cargo run
+// cargo build
+// run
+// cargo run --bin qemu-uefi 
+// bios not supported anymore return to 0.1.0 for bios support
+
 #![no_std]
 #![no_main]
 #![feature(custom_test_frameworks)]
@@ -37,13 +33,11 @@ fn kernel_main(boot_info: &'static mut BootInfo) -> ! {
             *byte = 0x90;
         }
     }
-    loop {}
-
-    /*
+    
     use kernel::allocator;
     use kernel::memory::{self, BootInfoFrameAllocator};
 
-    println!("Hello World{}", "!");
+    //println!("Hello World{}", "!");
     kernel::init();
 
     // why the frick did they turn physical... into a fucking Optional!!! not Option no OPTIONAL!!!!
@@ -57,9 +51,8 @@ fn kernel_main(boot_info: &'static mut BootInfo) -> ! {
     #[cfg(test)]
     test_main();
 
-    println!("It did not crash!");
+    //println!("It did not crash!");
     kernel::hlt_loop();
-    */
 }
 
 //------------------------------------------------

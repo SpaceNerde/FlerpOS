@@ -12,6 +12,7 @@ pub mod interrupts;
 pub mod memory;
 pub mod serial;
 pub mod vga_buffer;
+pub mod frame_buffer;
 
 use core::panic::PanicInfo;
 extern crate alloc;
