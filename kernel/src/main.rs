@@ -39,6 +39,7 @@ fn kernel_main(boot_info: &'static mut BootInfo) -> ! {
     if let Some(framebuffer) = boot_info.framebuffer.as_mut() {
         let mut buffer_writer = frame_buffer::Writer {
             framebuffer: framebuffer.buffer_mut(),
+            info:  
             pos_x: 10,
             pos_y: 100,
         };
